@@ -1,0 +1,12 @@
+name: proyecto
+proxy:
+  dbms:
+    - dbms-proyecto.lndo.site
+recipe: lamp
+config:
+  webroot: .
+services:
+  dbms:
+    type: phpmyadmin
+    hosts:
+    -  database
