@@ -1,0 +1,92 @@
+*{
+	padding: 0;
+	margin: 0;
+	font-family: 'Times New Roman';
+}
+body{
+	background: #eee;
+}
+
+#principal{
+	width: 950px;
+	height: 600px;
+}
+main{
+	height: 150px;
+	margin-bottom: 5px;
+}
+
+section a{
+	width: 150px;
+	float: left;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	box-sizing: border-box;
+}
+section article{
+	width: 1000px;
+	height:300px;
+	font-family: 'Book Antiqua';
+	box-shadow: 0 0 2px #ccc;
+	background: white;
+	padding: 30px;
+	margin-bottom: 10px;
+	position: relative;
+}
+
+section article img{
+	width: 250px;
+	height: 250px;
+	float: left;
+	margin-right: 10px;  
+}
+section article:hover img{
+	filter: blur(1px);
+	-webkit-filter: blur(1px);
+}
+section article p{
+	color: #333;
+	text-align: justify;
+	margin-top: 5px;
+}
+section article span{
+	color: #555;
+}
+section article .tag{
+	text-decoration: none;
+	color: #555;
+}
+section article .active{
+	text-decoration: none; 
+	position: absolute; 
+	background: teal;
+	color: white;
+	padding: 3px 7px;
+	right: 5px;
+	bottom: 5px;
+	border-radius: 2px;
+	border-bottom: 4px solid #005e5e;
+}
+section article .active:active{
+	border: none;
+	box-shadow: 0 0 2px #333 inset;
+	margin-top: 5px;
+}
+section article active:hover{
+	background: #007171;
+}
+aside{
+	width: 210px;
+	height: 350px;
+	background: white;
+	box-shadow: 0 0 2px #ccc;
+	float: left;
+}
+footer{
+	height: 50px;
+	line-height: 50px;
+	color: #444;
+	text-align: center;
+	background: white;
+	box-shadow: 0 0 2px #ccc;
+}
