@@ -1,3 +1,68 @@
+<?php
+// $alert = "";
+
+// if(!empty($_POST)){
+// 	echo $alert = "Ha dado click en ingresar";
+// }
+  session_start();
+
+  if(isset($_GET['cerrar_sesion'])){
+	session_unset(); 
+
+	// destroy the session 
+	session_destroy(); 
+}
+
+if(isset($_SESSION['user_id'])){
+	switch($_SESSION['user_id']){
+		case 1:
+			header('location: admin.php');
+		break;
+
+		case 2:
+		header('location: pagina.php');
+		break;
+
+		default:
+	}
+}
+
+  require 'database.php';
+
+
+		if(isset($_POST['email']) && isset($_POST['password'])){
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+		
+        $query = $conn->prepare('SELECT *FROM usuarios WHERE email = :email AND password = :password');
+        $query->execute(['email' => $email, 'password' => $password]);
+	
+		$row = $query->fetch(PDO::FETCH_NUM);
+        
+		if($row == true){
+		$rol = $row[3];
+		
+		$_SESSION['user_id'] = $rol;
+		switch($rol){
+			case 1:
+				header('location: admin.php');
+			break;
+
+			case 2:
+			header('location: pagina.php');
+			break;
+
+			default:
+		}
+	}else{
+		// no existe el usuario
+		echo "Nombre de usuario o contraseña incorrecto";
+	}
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +88,10 @@
 </head>
 <body>
 	
+		<?php if(!empty($message)): ?>
+      	<p> <?= $message ?></p>
+		<?php endif; ?>
+		
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -30,7 +99,8 @@
 					<img src="img/img-01.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form">
+				
+				<form action="#" method="POST" class="login100-form validate-form">
 					<span class="login100-form-title">
 						Acceso de miembro
 					</span>
@@ -44,7 +114,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass" placeholder="Contraseña">
+						<input class="input100" type="password" name="password" placeholder="Contraseña">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -57,20 +127,13 @@
 						</button>
 					</div>
 					<div class="text-center p-t-12">
-						<span class="txt1">
-							Olvidó
-						</span>
-						<a class="txt2" href="#">
-							Usuario / Contraseña?
-						</a>
-					</div>
-
-					<div class="text-center p-t-75">
-						<a class="txt2" href="#">
+						<a href="./registrarse.php" class="txt2" href="#">
 							Crear su cuenta.
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>
+
+					
 				</form>
 			</div>
 		</div>
