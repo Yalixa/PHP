@@ -46,7 +46,7 @@ if(isset($_SESSION['user_id'])){
 		$_SESSION['user_id'] = $rol;
 		switch($rol){
 			case 1:
-				header('location: admin.php');
+				header('location: dashboard.php');
 			break;
 
 			case 2:
