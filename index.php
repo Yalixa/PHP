@@ -16,7 +16,7 @@
 if(isset($_SESSION['user_id'])){
 	switch($_SESSION['user_id']){
 		case 1:
-			header('location: admin.php');
+			header('location: dashboard.php');
 		break;
 
 		case 2:
