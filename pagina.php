@@ -1,4 +1,18 @@
 <?php
+
+session_start();
+
+if(!isset($_SESSION['user_id'])){
+    header('location: index.php');
+}else{
+    if($_SESSION['user_id'] != 2){
+        header('location: index.php');
+    }
+}
+
+?>
+<?php
+
     if(isset($_GET["created"])){
         echo "El post ha sido creado con exito";
     }
@@ -61,10 +75,9 @@ require 'database.php';
                 <div class="header-right">
                     <img src="img/icons/search.png" alt="" class="search-trigger">
                     <img src="img/icons/man.png" alt="">
-                    <a href="#">
-                        <!-- <img src="img/icons/bag.png" alt="">
-                        <span>2</span> -->
-                    </a>
+                </div>
+                <div class="user-access">
+                    <a href="./index.php?cerrar_sesion">Cerrar Sesion</a>  
                 </div>
                 <div class="user-access">
                     <a href="./registrarse.php">Registrarse</a>
