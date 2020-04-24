@@ -1,14 +1,16 @@
-<!--
-=========================================================
-Material Dashboard - v2.1.2
-=========================================================
+<?php
+  
+  session_start();
 
-Product Page: https://www.creative-tim.com/product/material-dashboard
-Copyright 2020 Creative Tim (https://www.creative-tim.com)
-Coded by Creative Tim
+  if(!isset($_SESSION['user_id'])){
+      header('location: index.php');
+  }else{
+      if($_SESSION['user_id'] != 1){
+          header('location: index.php');
+      }
+  }
 
-=========================================================
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,6 +61,13 @@ The above copyright notice and this permission notice shall be included in all c
             <a class="nav-link" href="./user.php">
               <i class="material-icons">person</i>
               <p>Usuarios</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="index.php?cerrar_sesion">
+              <i class="material-icons">person</i>
+              <p>Cerrar Sesion</p>
+
             </a>
           </li>
         </ul>
