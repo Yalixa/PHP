@@ -50,7 +50,7 @@ The above copyright notice and this permission notice shall be included in all c
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./">
+            <a class="nav-link" href="./contenido.php">
               <i class="material-icons">dashboard</i>
               <p>Contenido</p>
             </a>
